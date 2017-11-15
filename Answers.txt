@@ -1,0 +1,80 @@
+
+Outputs:
+
+1a
+        The number of ORFs for:
+        start positions have indices congruent to 1 mod 3:  37897
+        start positions have indices congruent to 2 mod 3:  38771
+        start positions have indices congruent to 0 mod 3:  38529
+
+1b
+        The total number of ORFs of length less than 50:  88030
+
+1c
+        The total number of ORFs of length greater than 1400:  118
+
+1d
+        The total number of "simple forward strand CDSs" you found in GenBank:  881
+
+1e
+        P(A | Axy):
+               A        C       G       T
+            A  6580     1780    3965    3302
+            C  1656     685     293     770
+            G  3295     999     1981    950
+            T  3347     837     2250    2895
+
+        Q(A | Axy):
+               A        C       G       T
+            A  28571    8454    13459   14240
+            C  7929     4319    1209    3549
+            G  12136    4744    7204    3650
+            T  12913    7386    5369    12610
+
+1f
+        Length less than 50:
+        start coordinate: 1, length: 39, log-base-2 Markov model score: 1.07345213609, simple forward strand CDSs: False
+        start coordinate: 3, length: 6, log-base-2 Markov model score: -0.472035122859, simple forward strand CDSs: False
+        start coordinate: 9, length: 15, log-base-2 Markov model score: -0.642633944682, simple forward strand CDSs: False
+        start coordinate: 24, length: 12, log-base-2 Markov model score: 0.432593804743, simple forward strand CDSs: False
+        start coordinate: 40, length: 15, log-base-2 Markov model score: 0.448489740657, simple forward strand CDSs: False
+
+        Length greater than 1400:
+        start coordinate: 17619, length: 1614, log-base-2 Markov model score: 54.0512298248, simple forward strand CDSs: True
+        start coordinate: 33626, length: 1623, log-base-2 Markov model score: 65.5085542085, simple forward strand CDSs: True
+        start coordinate: 42725, length: 2388, log-base-2 Markov model score: 75.7341689622, simple forward strand CDSs: True
+        start coordinate: 74592, length: 1422, log-base-2 Markov model score: 36.2835685179, simple forward strand CDSs: True
+        start coordinate: 76820, length: 1665, log-base-2 Markov model score: 61.4955955207, simple forward strand CDSs: True
+
+2 (Pictures in folder Q2)
+
+3
+        'length': 42
+        'true positive count': 707
+        'false positive count': 88
+        'true positive rate': 0.8024971623155505
+
+4
+        'Markov Model Score': -5.730611938767851
+        'true positive count': 706
+        'false positive count': 89
+        'true positive rate': 0.8013620885357549
+        
+5(Pictures in folder Q5)
+        At the beginning cut perpendicular line in Question_5.png,
+        false positive count = 156
+        false negative count = 114160
+        With function y = -29.2493783628 * x + 10611.7493279
+
+        80% true positive rate is reached at y = -29.2493783628 * x + 12450
+        wher slope is -29.2493783628 and y-intercept = 12450, the rate increases as the y-intercept decreases
+        true positive count: 707,
+        false positive count: 84,
+        true positive rate: 0.8024971623155505
+
+	Summary:
+	I have learned how to calculate Markov model score and apply it to determine whether a sequence of letters represent a true gene.
+	I have learned how to draw ROC curves according to the data collected by setting binary bounaries to make predictions.
+	From the picture in Q5/Question5_zoom(all ORFs) we can see clearly how the relationship between the length and the Markov model score
+	of sequences. And I have learned how to use the cut line to predict sequences.
+	Also, I have learned how to draw plots using python
