@@ -1,80 +1,187 @@
 
+Summary:
+I found a lot of fun in learning the EM training strategy and the HMMs algorithm. Such
+algorithms helps to do predictions without knowing the states passed through just based
+on the experience and the probability calculations. However, I think the algorithm still
+has some bias here. For example, after 9-iterations of training in state 1 the E of 'A' and
+E of 'G' are quite low, but it is not the truth actually. Nevertheless, it did some good 
+predictions for sequence in state 2.
+
 Outputs:
 
-1a
-        The number of ORFs for:
-        start positions have indices congruent to 1 mod 3:  37897
-        start positions have indices congruent to 2 mod 3:  38771
-        start positions have indices congruent to 0 mod 3:  38529
+(a) The language I used is Python 2.7
+(b) Basic info about computer: (Run on VMVare Intel Core i7-6700HQ CPU 2.60GHz * 2 with 3 GiB of RAM)
+the total CPU time taken by your algorithm for the first 9 Viterbi iterations: 
+--- 50.5241630077 seconds ---
 
-1b
-        The total number of ORFs of length less than 50:  88030
+Results for each iteration:
+Iteration  1
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.3453530603477705, 'C': 0.1544031414023807, 'T': 0.34226615760061435, 'G': 0.15797764064923445}
+		 State 2:  {'A': 0.1866236255422173, 'C': 0.31463734490063555, 'T': 0.18490870573993745, 'G': 0.3138303238172097}
+	 Transitions	: State1 	State2
+	 Begin: 	0.994046138969  	0.00595386103053
+	 State1: 	{1: 0.9999987915816746, 2: 1.2084183254046366e-06}
+	 State2: 	{1: 0.00020175527085645111, 2: 0.9997982447291436}
 
-1c
-        The total number of ORFs of length greater than 1400:  118
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2308117.25052
 
-1d
-        The total number of "simple forward strand CDSs" you found in GenBank:  881
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		2
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(154651, 159579), (638464, 643447)]
+Iteration  2
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.34574325674930795, 'C': 0.1540332301579129, 'T': 0.34263527387925446, 'G': 0.15758823921352466}
+		 State 2:  {'A': 0.18762446657183499, 'C': 0.3108108108108108, 'T': 0.1879800853485064, 'G': 0.3135846372688478}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991555403401  	0.00844459659934
+	 State1: 	{1: 0.9999860682811712, 2: 1.3931718828796846e-05}
+	 State2: 	{1: 0.001635846372688478, 2: 0.9983641536273116}
 
-1e
-        P(A | Axy):
-               A        C       G       T
-            A  6580     1780    3965    3302
-            C  1656     685     293     770
-            G  3295     999     1981    950
-            T  3347     837     2250    2895
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2188058.07415
 
-        Q(A | Axy):
-               A        C       G       T
-            A  28571    8454    13459   14240
-            C  7929     4319    1209    3549
-            G  12136    4744    7204    3650
-            T  12913    7386    5369    12610
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		23
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (138345, 138419), (154610, 159591)]
+Iteration  3
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.3458181650726865, 'C': 0.15395582582393347, 'T': 0.34271281211069476, 'G': 0.15751319699268532}
+		 State 2:  {'A': 0.18493901603398658, 'C': 0.3138276003837193, 'T': 0.1848704947238591, 'G': 0.316362888858435}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991234676901  	0.00876532309891
+	 State1: 	{1: 0.9999793986215254, 2: 2.060137847459398e-05}
+	 State2: 	{1: 0.0023297245443332877, 2: 0.9976702754556667}
 
-1f
-        Length less than 50:
-        start coordinate: 1, length: 39, log-base-2 Markov model score: 1.07345213609, simple forward strand CDSs: False
-        start coordinate: 3, length: 6, log-base-2 Markov model score: -0.472035122859, simple forward strand CDSs: False
-        start coordinate: 9, length: 15, log-base-2 Markov model score: -0.642633944682, simple forward strand CDSs: False
-        start coordinate: 24, length: 12, log-base-2 Markov model score: 0.432593804743, simple forward strand CDSs: False
-        start coordinate: 40, length: 15, log-base-2 Markov model score: 0.448489740657, simple forward strand CDSs: False
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2187966.09625
 
-        Length greater than 1400:
-        start coordinate: 17619, length: 1614, log-base-2 Markov model score: 54.0512298248, simple forward strand CDSs: True
-        start coordinate: 33626, length: 1623, log-base-2 Markov model score: 65.5085542085, simple forward strand CDSs: True
-        start coordinate: 42725, length: 2388, log-base-2 Markov model score: 75.7341689622, simple forward strand CDSs: True
-        start coordinate: 74592, length: 1422, log-base-2 Markov model score: 36.2835685179, simple forward strand CDSs: True
-        start coordinate: 76820, length: 1665, log-base-2 Markov model score: 61.4955955207, simple forward strand CDSs: True
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		34
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (118079, 118179), (138345, 138419)]
+Iteration  4
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.3458236254730215, 'C': 0.15395126325899308, 'T': 0.34272296771183336, 'G': 0.15750214355615208}
+		 State 2:  {'A': 0.18521294718909712, 'C': 0.313458262350937, 'T': 0.18459965928449745, 'G': 0.31672913117546847}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991186027376  	0.00881397262413
+	 State1: 	{1: 0.9999787916577288, 2: 2.120834227115065e-05}
+	 State2: 	{1: 0.002385008517887564, 2: 0.9976149914821124}
 
-2 (Pictures in folder Q2)
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2187960.61979
 
-3
-        'length': 42
-        'true positive count': 707
-        'false positive count': 88
-        'true positive rate': 0.8024971623155505
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		35
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (118079, 118179), (138345, 138419)]
+Iteration  5
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.34582907392673556, 'C': 0.1539530828004404, 'T': 0.3427277613528461, 'G': 0.1574900819199779}
+		 State 2:  {'A': 0.18488538194680634, 'C': 0.31297190667301544, 'T': 0.18434120127882456, 'G': 0.31780151010135366}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991170411479  	0.00882958852111
+	 State1: 	{1: 0.9999781853614079, 2: 2.1814638592076996e-05}
+	 State2: 	{1: 0.0024488130059179647, 2: 0.9975511869940821}
 
-4
-        'Markov Model Score': -5.730611938767851
-        'true positive count': 706
-        'false positive count': 89
-        'true positive rate': 0.8013620885357549
-        
-5(Pictures in folder Q5)
-        At the beginning cut perpendicular line in Question_5.png,
-        false positive count = 156
-        false negative count = 114160
-        With function y = -29.2493783628 * x + 10611.7493279
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2187960.58232
 
-        80% true positive rate is reached at y = -29.2493783628 * x + 12450
-        wher slope is -29.2493783628 and y-intercept = 12450, the rate increases as the y-intercept decreases
-        true positive count: 707,
-        false positive count: 84,
-        true positive rate: 0.8024971623155505
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		35
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (118079, 118179), (138345, 138419)]
+Iteration  6
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.34582907392673556, 'C': 0.1539530828004404, 'T': 0.3427277613528461, 'G': 0.1574900819199779}
+		 State 2:  {'A': 0.18488538194680634, 'C': 0.31297190667301544, 'T': 0.18434120127882456, 'G': 0.31780151010135366}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991170411479  	0.00882958852111
+	 State1: 	{1: 0.9999781853614079, 2: 2.1814638592076996e-05}
+	 State2: 	{1: 0.0024488130059179647, 2: 0.9975511869940821}
 
-	Summary:
-	I have learned how to calculate Markov model score and apply it to determine whether a sequence of letters represent a true gene.
-	I have learned how to draw ROC curves according to the data collected by setting binary bounaries to make predictions.
-	From the picture in Q5/Question5_zoom(all ORFs) we can see clearly how the relationship between the length and the Markov model score
-	of sequences. And I have learned how to use the cut line to predict sequences.
-	Also, I have learned how to draw plots using python
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2187960.51561
+
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		35
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (118079, 118179), (138345, 138419)]
+Iteration  7
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.34582907392673556, 'C': 0.1539530828004404, 'T': 0.3427277613528461, 'G': 0.1574900819199779}
+		 State 2:  {'A': 0.18488538194680634, 'C': 0.31297190667301544, 'T': 0.18434120127882456, 'G': 0.31780151010135366}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991170411479  	0.00882958852111
+	 State1: 	{1: 0.9999781853614079, 2: 2.1814638592076996e-05}
+	 State2: 	{1: 0.0024488130059179647, 2: 0.9975511869940821}
+
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2187960.51561
+
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		35
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (118079, 118179), (138345, 138419)]
+Iteration  8
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.34582907392673556, 'C': 0.1539530828004404, 'T': 0.3427277613528461, 'G': 0.1574900819199779}
+		 State 2:  {'A': 0.18488538194680634, 'C': 0.31297190667301544, 'T': 0.18434120127882456, 'G': 0.31780151010135366}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991170411479  	0.00882958852111
+	 State1: 	{1: 0.9999781853614079, 2: 2.1814638592076996e-05}
+	 State2: 	{1: 0.0024488130059179647, 2: 0.9975511869940821}
+
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2187960.51561
+
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		35
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (118079, 118179), (138345, 138419)]
+Iteration  9
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.34582907392673556, 'C': 0.1539530828004404, 'T': 0.3427277613528461, 'G': 0.1574900819199779}
+		 State 2:  {'A': 0.18488538194680634, 'C': 0.31297190667301544, 'T': 0.18434120127882456, 'G': 0.31780151010135366}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991170411479  	0.00882958852111
+	 State1: 	{1: 0.9999781853614079, 2: 2.1814638592076996e-05}
+	 State2: 	{1: 0.0024488130059179647, 2: 0.9975511869940821}
+
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2187960.51561
+
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		35
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (118079, 118179), (138345, 138419)]
+Iteration  10
+	(a) The HMM emission/transition parameters: 
+	 Emission: 
+		 State 1:  {'A': 0.34582907392673556, 'C': 0.1539530828004404, 'T': 0.3427277613528461, 'G': 0.1574900819199779}
+		 State 2:  {'A': 0.18488538194680634, 'C': 0.31297190667301544, 'T': 0.18434120127882456, 'G': 0.31780151010135366}
+	 Transitions	: State1 	State2
+	 Begin: 	0.991170411479  	0.00882958852111
+	 State1: 	{1: 0.9999781853614079, 2: 2.1814638592076996e-05}
+	 State2: 	{1: 0.0024488130059179647, 2: 0.9975511869940821}
+
+	(b) the log probability (natural log, base-e) of the overall Viterbi path.
+		-2187960.51561
+
+	(c) the total number of "hits" found, where a hit is (contiguous) subsequence assigned to state 2 in the Viterbi path:
+		35
+	(d) the lengths and locations (starting and ending positions) of the first k "hits."
+		[(97326, 97541), (97627, 97823), (111764, 111856), (118079, 118179), (138345, 138419), (154610, 157697), (157782, 159591), (186974, 187067), (190831, 190907), (215200, 215296), (227705, 227782), (303990, 304080), (358766, 358942), (359974, 360046), (402969, 403057), (412582, 412635), (552537, 552862), (619161, 619236), (637579, 638153), (638334, 640132), (640217, 643449), (643500, 643767), (763767, 763845), (764022, 764095), (774708, 774788), (863476, 864151), (873579, 873778), (883675, 883755), (951852, 951968), (1038544, 1038622), (1129124, 1129194), (1150142, 1150402), (1189943, 1190054), (1313165, 1313251), (1659451, 1659520)]
